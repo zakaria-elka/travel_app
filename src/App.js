@@ -8,7 +8,7 @@ function App() {
     <Navbar bg="dark" variant="dark">
     <Container>
       <Navbar.Brand href="#home">
-       NeedTravel
+       NeedTravel please
       </Navbar.Brand>
     </Container>
     </Navbar>

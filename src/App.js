@@ -1,20 +1,15 @@
-import { Navbar,Container} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import BudgetBox from './Components/BudgetBox';
+import FilterBox from './Components/FilterBox';
+import NavBar from './MainComponents/NavBar';
 import React from 'react';
+ 
 function App() {
   return (
-<div>
-    <Navbar bg="dark" variant="dark">
-    <Container>
-      <Navbar.Brand href="#home">
-       NeedTravel please
-      </Navbar.Brand>
-    </Container>
-    </Navbar>
-    <BudgetBox/>
-    </div>
+<React.Fragment>
+    <NavBar/>
+    
+    <FilterBox/>
+    </React.Fragment>
     
   );
 }

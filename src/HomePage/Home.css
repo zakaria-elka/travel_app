@@ -1,0 +1,52 @@
+
+.homeapp::after {
+    content: "";
+    background-image: url("../images/background.jpg");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+    background-size: cover;
+  }
+
+
+.txt{
+    
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    
+    
+    }
+
+.txt p{
+
+    color:chocolate;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 60px;
+  
+
+}    
+
+.txt pre{
+  
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    padding-left: 15%;
+    font-size: 20px;
+}
+    
+
+.btnExplore{
+
+
+    position: absolute;
+    right:42%;
+    top: 55%;
+    width: 200px;
+
+
+}

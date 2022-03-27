@@ -1,15 +1,14 @@
 import './App.css';
-import FilterBox from './Components/FilterBox';
-import NavBar from './MainComponents/NavBar';
 import React from 'react';
+import Home from './HomePage/Home';
  
 function App() {
   return (
 <React.Fragment>
-    <NavBar/>
-    
-    <FilterBox/>
+
+  <Home/>
     </React.Fragment>
+    
     
   );
 }

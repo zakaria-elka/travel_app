@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { Navbar,Nav} from 'react-bootstrap';
 import "./navbar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from "bootstrap";
 import LoginForm from "../Auth/LoginForm";
+import { logout, useAuth } from "../firebase/fire";
 
 
 
 const NavBar=()=>{
 
    const [state,setState]=useState(0);
-   
+   const currentUser = useAuth();
        
-    
+   async function  handleLogout(){
+
+      await logout();
+   }
+
 
     return (
     
@@ -20,7 +24,7 @@ const NavBar=()=>{
         <Navbar bg="dark" variant="dark">
      
       <Navbar.Brand className="mx-4">
-       Trovago
+        YesTravel
       </Navbar.Brand>
       <Nav>
           <Nav.Link to="products">Popular destinations</Nav.Link>
@@ -28,13 +32,14 @@ const NavBar=()=>{
           <Nav.Link to="products">Privacy policy</Nav.Link>
   
           
-
-          <input type="button" value="Sign in" className="btn btn-success" onClick={()=>setState(true)} />
-
+{currentUser?.email? <input type="button" value="Log out" className="btn btn-danger" onClick={handleLogout} />
+          :<input type="button" value="Login" className="btn btn-success" onClick={()=>setState(true)}/>}
+     
+         
       </Nav>
-      
     </Navbar>
     {state ? <LoginForm state={state} setState={setState} />:null}
+
     </React.Fragment>
     )
 

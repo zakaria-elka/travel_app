@@ -1,6 +1,5 @@
 import { Button,Form} from "react-bootstrap";
 import React,{Component,useRef} from "react";
-import './input.css';
 
 
 

@@ -1,18 +1,60 @@
-import React,{Component} from "react";
-export default class Input extends Component{
-render(){
-    return <div   className="p-5 bg-dark">
-        <div className="form-group my-4">
-        <label htmlFor={this.props.name} style={{color:"white"}} className="mx-4" >{this.props.question}</label>
-        <input type={this.props.type} value={this.props.value[this.props.name]}name={this.props.name} id={this.props.name} onChange={(e)=>{this.props.handleOnChange(e)}}/>
-        </div>
-        <div className="">
-        <button className="btn btn-primary" onClick={(e)=>this.props.handleNextFilter(e)} disabled={this.props.currentFilter>0?"":"disabled"}name="previous" >previous</button>
-       <button className="btn btn-primary mx-4" onClick={(e)=>this.props.handleNextFilter(e)} disabled={ this.props.currentFilter<4?"":"disabled"} name="next" >next</button>
-         
-         
-         <button className="btn btn-success" disabled={this.props.currentFilter===4?"":"disabled"}  >Search</button>
-        </div>
-    </div>
+import { Button,Form} from "react-bootstrap";
+import React,{Component,useRef} from "react";
+import './input.css';
+
+
+
+const Input=(props)=>{
+
+  const BudgetRef =useRef();
+  const DestinationRef =useRef();
+  const NumberPersonRef =useRef();
+
+
+  const handleInfo=()=>{
+
+    console.log("succes");
+ 
+ 
+  }
+
+    return (
+
+ 
+        <Form>
+          
+        <Form.Group  className="mb-3" hidden={(props.filter==0)?false:true}>
+          <Form.Label >Budget</Form.Label>
+          <Form.Control type="number" min="500" placeholder="Enter Budget" ref={BudgetRef}/>
+
+          
+        </Form.Group>
+        <Form.Group className="mb-3"  hidden={(props.filter==1)?false:true} >
+          <Form.Label>Destination</Form.Label>
+          <Form.Select aria-label="Default select example" ref={DestinationRef}>
+              <option>Select Destination</option>
+              <option value="Tanger">Tanger</option>
+              <option value="Marrakech">Marrakech</option>
+              <option value="Fes">Fes</option>
+            </Form.Select>
+          
+          
+        </Form.Group>
+        <Form.Group className="mb-3" hidden={(props.filter==2)?false:true}>
+          <Form.Label>Number of Person</Form.Label>
+          <Form.Control type="number" min="1" placeholder="Enter Person number" ref={NumberPersonRef} />
+           
+          
+          
+        </Form.Group>
+        
+      
+        {(props.filter==2)?<Button variant="primary" onClick={handleInfo}>Search</Button>:null}
+      </Form>
+
+
+    )
+
 }
-}
+
+export default Input

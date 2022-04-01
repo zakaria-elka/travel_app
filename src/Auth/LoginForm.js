@@ -5,6 +5,7 @@ import {signUp, login} from '../firebase/fire';
 
 
 
+
 const LoginForm=(props)=>{
     
   const [form,setform]=useState(0);
@@ -28,7 +29,7 @@ const LoginForm=(props)=>{
     return(
 
     <div className='loginform' >
-    <Modal show={props.state} onHide={close}>
+    <Modal show={props.state} onHide={close} >
           <Modal.Header closeButton>
             <Modal.Title>{form ? <text>Sign In</text>:<text>Sign Up</text>}</Modal.Title>
           </Modal.Header>
@@ -40,7 +41,7 @@ const LoginForm=(props)=>{
 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary"  onClick={()=>setform(!form)}>
+            <Button variant="secondary" style={{marginLeft:"50px"}} onClick={()=>setform(!form)}>
               {form ? <text>Sign Up</text>:<text>sign In</text>}
             </Button>
           </Modal.Footer>
@@ -100,7 +101,7 @@ const Registerform=(props)=>{
       />
     </Form.Group>
     
-    <Button  variant="primary"  onClick={()=>{handleSignup(); close();}} style={{position:"relative",marginRight:"84%"}} >
+    <Button  variant="primary"  onClick={()=>{handleSignup(); close();}} style={{marginRight:"84%",position:'static'}} >
       Submit
     </Button>
   </Form>

@@ -18,8 +18,8 @@ function App() {
 <Routes>
 
   <Route path="/" element={<Home/> }/>
-  <Route path="/filterbox" exact element={<div><Home/><FilterBox/></div> }/>
-  <Route path="/filterboxo" exact element={<div><Home/><FilterBox/>boxo</div> }/>
+  <Route path="/filterbox" exact element={<FilterBox />}/>
+ 
  
 
 </Routes>

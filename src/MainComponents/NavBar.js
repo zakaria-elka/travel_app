@@ -3,6 +3,7 @@ import { Navbar,Nav} from 'react-bootstrap';
 import "./navbar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginForm from "../Auth/LoginForm";
+import Home, { ButtonExplore } from "../HomePage/Home";
 import { logout, useAuth } from "../firebase/fire";
 
 
@@ -17,6 +18,13 @@ const NavBar=()=>{
       await logout();
    }
 
+   const showElement=()=>{
+
+    setState(true);
+  
+   
+
+   }
 
     return (
     
@@ -33,13 +41,16 @@ const NavBar=()=>{
   
           
 {currentUser?.email? <input type="button" value="Log out" className="btn btn-danger" onClick={handleLogout} />
-          :<input type="button" value="Login" className="btn btn-success" onClick={()=>setState(true)}/>}
+          :<input type="button" value="Login" className="btn btn-success" onClick={showElement}/>}
      
          
       </Nav>
+     
+  
     </Navbar>
-    {state ? <LoginForm state={state} setState={setState} />:null}
 
+    {state ? <LoginForm state={state} setState={setState} />:null}
+    
     </React.Fragment>
     )
 

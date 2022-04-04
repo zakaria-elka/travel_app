@@ -9,11 +9,32 @@ const Input=(props)=>{
   const DestinationRef =useRef();
   const NumberPersonRef =useRef();
 
-
-  const handleInfo=()=>{
-
-    console.log("succes");
+  
+  async function handleInfo(){
  
+    if(BudgetRef.current.value>500 && NumberPersonRef.current.value>=1){
+
+    var state={
+
+      Budget: BudgetRef.current.value,
+      Destination: DestinationRef.current.value,
+      NumberPerson: NumberPersonRef.current.value,
+  
+    }
+  
+
+    fetch('http://localhost:5000/api/hotels/add', { 
+
+      method: 'POST', 
+      mode: 'cors', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(state) // body data type must match "Content-Type" header
+
+    })
+    
+  }else{
+    alert("Error")
+  }
  
   }
 
@@ -41,7 +62,7 @@ const Input=(props)=>{
         </Form.Group>
         <Form.Group className="mb-3" hidden={(props.filter==2)?false:true}>
           <Form.Label>Number of Person</Form.Label>
-          <Form.Control type="number" min="1" placeholder="Enter Person number" ref={NumberPersonRef} />
+          <Form.Control type="number" min="1" max="10" placeholder="Enter Person number" ref={NumberPersonRef} />
            
           
           

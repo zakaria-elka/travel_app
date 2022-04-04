@@ -9,9 +9,7 @@ import { useAuth } from '../firebase/fire';
 
 const Home=()=>{
    
-   
   
-   
  
     return(
 
@@ -38,12 +36,13 @@ export function ButtonExplore(){
   const [show,setClose]=useState(0);
   const user=useAuth();
 
-
+ 
+     
 
 return(
 <div>
  
- <Button className='btnExplore' variant='danger'  onClick={()=>{setClose(!show);}}>Explore</Button>
+ <Button className='btnExplore' variant='danger'  onClick={()=>setClose(!show)}>Explore</Button>
  {(show && user?.email) ?<FilterBox show={show} setClose={setClose} />:<LoginForm state={show} setState={setClose} />}
  
 </div>

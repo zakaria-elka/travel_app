@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import FilterBox from './Components/FilterBox'
+import Data from './Datapage/data';
  
 import {
   BrowserRouter,
@@ -19,6 +20,7 @@ function App() {
 
   <Route path="/" element={<Home/> }/>
   <Route path="/filterbox" exact element={<FilterBox />}/>
+  <Route path="/data" exact element={<Data />}  />
  
  
 

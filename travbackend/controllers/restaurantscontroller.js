@@ -1,38 +1,45 @@
 
 const mongoose=require('mongoose');
-
+const { add } = require('nodemon/lib/rules');
+const HttpError=require('../modules/http-error')
 
 
 
 
 const getAllRestaurants=async (req,res,next)=>{
-    if(false)
-    return next(error)
+    if(false){
+        const error=new HttpError("list is empty",500)
+    return next(error)}
     res.json({})    
     }
     const getRestaurantByPreferences=async (req,res,next)=>{
-    if(false)
-    return next(error)
+    if(false){
+        const error=new HttpError("list is empty",500)
+    return next(error)}
     res.json({})    
     }
     const getRestaurantById=async (req,res,next)=>{
-        if(false)
-        return next(error)
+        if(false){
+            const error=new HttpError("list is empty",500)
+        return next(error)}
         res.json({})    
         }
     const updateRestaurantById=async (req,res,next)=>{
-        if(false)
-        return next(error)
+        if(false){
+            const error=new HttpError("list is empty",500)
+        return next(error)}
         res.json({})    
         }
     const deleteRestaurantById=async (req,res,next)=>{
-        if(false)
-        return next(error)
+        if(false){
+            const error=new HttpError("list is empty",500)
+        return next(error)}
         res.json({})    
         }
     const addRestaurant=async (req,res,next)=>{
-    if(false)
-    return next(error)
+    if(false){
+        const error=new HttpError("list is empty",500)
+    return next(error)}
     res.json({})    
     }
 exports.getAllRestaurants=getAllRestaurants;

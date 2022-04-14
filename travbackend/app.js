@@ -1,7 +1,7 @@
 const express=require('express');
 const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
-
+const HttpError=require("./modules/http-error")
 const hotelsroutes=require('./routes/hotelsroutes')
 const restaurantsroutes=require('./routes/restaurantsroutes')
 const transportsroutes=require('./routes/transportroutes')
@@ -18,6 +18,10 @@ app.use((req,res,next)=>{
 app.use('/api/hotels',hotelsroutes)
 app.use('api/restaurants',restaurantsroutes)
 app.use('api/transports',transportsroutes)
+app.use((req,res,next)=>{
+    const error=new HttpError('couldnt find this route',404);
+});
+
 app.use((error,req,res,next)=>{
     if(res.headerSent){
         return next(error);
@@ -26,5 +30,6 @@ app.use((error,req,res,next)=>{
     res.json({message:error.message ||'unkown error '});
 })
 
-// demarer le server apres auth de mongodb mongoose.connect('mongodb+srv://YOURUSER:YOURPASSWORD@cluster0.tsx05.mongodb.net/CLNAME?retryWrites=true&w=majority').then(()=>{app.listen(5000) }).catch(err=>{console.log(err)});
+// demarer le server apres auth de mongodb 
+//mongoose.connect('mongodb+srv://zakaria-elk:YOURPASSWORD@cluster0.tsx05.mongodb.net/CLNAME?retryWrites=true&w=majority').then(()=>{app.listen(5000) }).catch(err=>{console.log(err)});
 app.listen(5000);

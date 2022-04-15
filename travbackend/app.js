@@ -31,5 +31,5 @@ app.use((error,req,res,next)=>{
 })
 
 // demarer le server apres auth de mongodb 
-//mongoose.connect('mongodb+srv://zakaria-elk:YOURPASSWORD@cluster0.tsx05.mongodb.net/CLNAME?retryWrites=true&w=majority').then(()=>{app.listen(5000) }).catch(err=>{console.log(err)});
-app.listen(5000);
+mongoose.connect('mongodb+srv://zakaria-elk:HEYHEYmongo@travelapp.tcd2y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(()=>{app.listen(5000);console.log("connected") }).catch(err=>{console.log(err)});
+//app.listen(5000);

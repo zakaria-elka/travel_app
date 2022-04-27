@@ -5,6 +5,7 @@ const HttpError=require("./modules/http-error")
 const hotelsroutes=require('./routes/hotelsroutes')
 const restaurantsroutes=require('./routes/restaurantsroutes')
 const transportsroutes=require('./routes/transportroutes')
+const packsroutes=require('./routes/packsroutes')
 
 const app=express();
 
@@ -16,8 +17,9 @@ app.use((req,res,next)=>{
        next();
    });
 app.use('/api/hotels',hotelsroutes)
-app.use('api/restaurants',restaurantsroutes)
-app.use('api/transports',transportsroutes)
+app.use('/api/restaurants',restaurantsroutes)
+app.use('/api/transports',transportsroutes)
+app.use('/api/packs',packsroutes)
 app.use((req,res,next)=>{
     const error=new HttpError('couldnt find this route',404);
 });

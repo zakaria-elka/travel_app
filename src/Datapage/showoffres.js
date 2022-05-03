@@ -6,8 +6,9 @@ import axios from "axios";
 
 
 const url= new URLSearchParams(window.location.search)
-const data = url.get('budget')
-const budget=data;
+const budget=url.get('budget');
+const city=url.get('city');
+const nuits=url.get('nuits');
 
 
 const Showoffres=()=>{
@@ -33,7 +34,7 @@ const Showoffres=()=>{
        
         axios({
             method: "get",
-            url: "http://localhost:5000/api/packs/all",
+            url: "http://localhost:5000/api/packs/search/"+budget +"/"+ city+"/"+nuits,
 
           })
                 .then((res)=>setResults(res.data))

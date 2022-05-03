@@ -27,7 +27,7 @@ const Input=(props)=>{
 
   
       setTimeout(() => {
-        window.location.href='../data?budget='+state.budget+'&city'+state.city+'&nuits'+state.nuits;
+        window.location.href='../data?budget='+state.budget+'&city='+state.city+'&nuits='+state.nuits;
       }, 2000)
 
 

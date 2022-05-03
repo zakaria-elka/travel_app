@@ -29,7 +29,7 @@ const NavBar=()=>{
     return (
     
     <React.Fragment>
-        <Navbar bg="dark" variant="dark">
+        <Navbar style={{background:"#2087fc"}} variant="dark">
      
       <Navbar.Brand className="mx-4">
         YesTravel

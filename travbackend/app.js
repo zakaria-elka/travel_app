@@ -6,9 +6,9 @@ const hotelsroutes=require('./routes/hotelsroutes')
 const restaurantsroutes=require('./routes/restaurantsroutes')
 const transportsroutes=require('./routes/transportroutes')
 const packsroutes=require('./routes/packsroutes')
-
+const methodeOverride=require("method-override");
 const app=express();
-
+app.use(methodeOverride('_method'));
 app.use(bodyParser.json())
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');

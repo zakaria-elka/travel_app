@@ -1,0 +1,14 @@
+.title {
+  
+    margin-top: 5px;
+    width: 40%;
+    padding: 2px 10px 2px;
+    margin-left: 30%;
+    background-color: black;
+    box-shadow: 3px 3px #0000;
+    border-radius: .5rem;
+    display: flex;
+
+   
+  }
+

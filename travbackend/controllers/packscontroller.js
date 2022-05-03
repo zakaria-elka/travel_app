@@ -71,7 +71,9 @@ const pack=await Pack.findById(req.params.packid).populate({path:"hotelId",model
 res.json(pack);
     }
 exports.getAllPacks=getAllPacks;
+ 
 exports.getUserPack=getUserPack;
 exports.showPack=showPack;
 exports.addToFavorites=addToFavorites;
 exports.removeFromFavorites=removeFromFavorites;
+ 

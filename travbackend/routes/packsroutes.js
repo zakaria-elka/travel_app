@@ -2,7 +2,9 @@ const express=require('express')
 const router=express.Router();
 const packscontroller=require('../controllers/packscontroller')
 router.get('/all',packscontroller.getAllPacks);
-router.post('/search',packscontroller.getPackWithPreferences);
-router.post('/fav',packscontroller.addToFavorites);
+router.delete('/remove/:packid',packscontroller.removeFromFavorites)
+router.get('/search/:budget/:city/:nuits',packscontroller.getUserPack);
+router.get('/pack/:packid',packscontroller.showPack);
+router.post('/fav/:userid/:hotelid/:transportid/:foodplaceid',packscontroller.addToFavorites);
  
 module.exports = router ;

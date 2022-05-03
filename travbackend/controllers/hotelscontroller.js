@@ -7,7 +7,7 @@ const hotel = require('../modules/hotel');
 
 //const hotelsByMongo=require('../modules/hotel');
 
-let DUMMY_DATA=[];
+
        
 const getAllHotels=async (req,res,next)=>{
     //to test the api get req on http://localhost:5000/api/hotels/all

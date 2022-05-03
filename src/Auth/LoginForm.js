@@ -101,7 +101,7 @@ const Registerform=(props)=>{
       />
     </Form.Group>
     
-    <Button  variant="primary"  onClick={()=>{handleSignup(); close();}} style={{marginLeft:"80%",}} >
+    <Button  variant="primary"  onClick={()=>{handleSignup(); close();}} style={{position:"relative",marginRight:"84%"}} >
       Submit
     </Button>
   </Form>

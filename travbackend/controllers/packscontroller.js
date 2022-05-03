@@ -38,4 +38,3 @@ const getAllPacks=async (req,res,next)=>{
 exports.getAllPacks=getAllPacks;
 exports.getPackWithPreferences=getPackWithPreferences;
 exports.addToFavorites=addToFavorites;
- 

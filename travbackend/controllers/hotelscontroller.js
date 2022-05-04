@@ -64,7 +64,7 @@ const addHotel=async (req,res,next)=>{
     //to test the api : post request on http://localhost:5000/api/hotels/add 
   /*  if(false){
         const error=new HttpError("list is empty",500) 
-    return next(error)}*/
+    return next(error)}
     const hotel=new Hotel({
         name:req.body.name,
         description:req.body.description,
@@ -74,7 +74,7 @@ const addHotel=async (req,res,next)=>{
         res.json(data) 
     }).catch(err=>{
         res.json({message:err})
-    })
+    })*/
     console.log(req.body);
     
     

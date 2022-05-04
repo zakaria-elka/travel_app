@@ -11,7 +11,7 @@ const getAllPacks=async (req,res,next)=>{
     if(false){
         const error=new HttpError("list is empty",500)
     return next(error)}
-    const hotels= await Hotel.find();
+    const hotels= await Hotel.find().populate({path:"resto",model:"Foodplace"});
     const restos= await Resto.find();
     const transp= await Transp.find();
     res.json({"hotels":hotels,"restos":restos,"transports":transp})    
@@ -28,24 +28,27 @@ const getAllPacks=async (req,res,next)=>{
      
     req.params.budget=parseInt(req.params.budget);
     req.params.nuits=parseInt(req.params.nuits);
+
     
-    const hotels= await Hotel.where("city").equals(req.params.city).where("prix").lt((req.params.budget*0.23)/req.params.nuits) ;
-     
+    const hotels= await Hotel.where("city").equals(req.params.city).where("prix").lt((req.params.budget*0.35)/req.params.nuits).populate({path:"resto",model:"Foodplace"});
+     const transport=await Transp.where("depart").equals(req.params.depart).where("finish").equals(req.params.city).where("prix").lt((req.params.budget*0.05));
         console.log(req.body); 
-        res.json({"hotels":hotels,"transport":{}})  
+        res.json({"hotels":hotels,"transport":transport})  
         }
 
    
     const addToFavorites=async (req,res,next)=>{
-      req.params.hotelid=  ToId(req.params.hotelid)
+       
     if(false){
         const error=new HttpError("list is empty",500)
     return next(error)}
-    console.log(3)
+    
      
     const pack=new Pack({
-        userId: req.params.userid,
-        hotelId: req.params.hotelid
+        userId: req.body.userid,
+        hotelId: req.body.hotelid,
+        foodId:req.body.restoid,
+        transportId:req.body.transportid
          
     })
      

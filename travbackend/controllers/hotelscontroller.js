@@ -18,7 +18,7 @@ const getAllHotels=async (req,res,next)=>{
         const error=new HttpError("list is empty",500)
     return next(error)}*/
 
-    const hotels= await Hotel.find();
+    const hotels= await Hotel.find().populate({path:"resto",model:"Foodplace"});
     res.json({"hotels":hotels});
     }
 

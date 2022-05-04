@@ -8,6 +8,7 @@ const Grid=require("gridfs-stream");
 const Hotel=require("../modules/hotel");
 const bodyParser=require("body-parser");
  
+let hotelName
  // 
  const mongoURL="mongodb+srv://zakaria-elk:HEYHEYmongo@travelapp.tcd2y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const conn=mongoose.createConnection(mongoURL);
@@ -19,7 +20,7 @@ conn.once('open',()=>{
 })
 
 // storage
- 
+
  
 
 const storage = new GridFsStorage({
@@ -64,7 +65,7 @@ router.delete('/delete/:id',hotelscontroller.deleteHotelById)
 router.post('/add',upload.single('file'),(req,res)=>{
    console.log(req.body.name)
    
-    const hotel=new Hotel({
+   /* const hotel=new Hotel({
         name:req.body.name,
         description:req.body.description,
 
@@ -74,7 +75,7 @@ router.post('/add',upload.single('file'),(req,res)=>{
         res.json(data) 
     }).catch(err=>{
         res.json({message:err})
-    })
+    })*/
     console.log(req.body);
     
 }); 

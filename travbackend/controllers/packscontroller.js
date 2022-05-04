@@ -57,8 +57,8 @@ const getAllPacks=async (req,res,next)=>{
     }).catch(err=>{
         res.json({message:err})
     })
-     
-    res.json(req.params.userid)    
+    
+    res.json({})    
     }
     const removeFromFavorites=async (req,res,next)=>{
         if(false){

@@ -30,14 +30,15 @@ const Showoffres=()=>{
     
     
     let hotel=document.getElementById("hotelid"+i).innerHTML;
+    let resto=document.getElementById("restoid"+i).innerHTML;
+    let trans=document.getElementById("transportid"+i).innerHTML;
 
-    var qs = require('qs');
 
-    await axios.post('https://webhook.site/5e13de9c-7ddf-41aa-9152-3d6fc214ca52', 
-    qs.stringify({'hoteId':hotel,'restoId':123}
+
+    await axios.post('http://localhost:5000/api/packs/fav', {'userid':currentUser.email,'hotelid':hotel,'restoid':resto,'transportid':trans}
     
     
-    ))
+    )
  
      
    
@@ -67,7 +68,7 @@ const Showoffres=()=>{
             
             
             
-            })
+            },[])
 
 
 return(
@@ -101,16 +102,31 @@ return(
         </div>
         <div className="divdata">
         {results.hotels.slice(i,i+1).map((data) =>( 
-        <p></p>
+         <div style={{display:"flex"}}>
+         <img className="img" src={"http://localhost:5000/api/hotels/image/"+data.name} />        
+         <div style={{width:"40%",flex:5}}>
+         <h2 hidden id={"restoid"+i}>{data.resto._id}</h2>
+        
+         <h6>Restaurant {data.resto.name}</h6>
+         <p style={{fontSize:"12px"}}>Adress : {data.resto.adress}</p>
+         <h6 style={{color:"red",paddingLeft:"50%"}}>{data.resto.prix}Dhs</h6>
+         </div>
+       
+ 
+         </div>
+         
         
          ))}   
          
         </div>
         <div className="divdata">
-        {results.hotels.slice(i,i+1).map((data) =>( 
-        <p></p>
-        
-         ))}   
+        {results.transport.slice(i,i+1).map((data) =>( 
+        <div style={{width:"100%",textAlign:"center"}}>
+        <h2 hidden id={"transportid"+i}>{data._id}</h2>
+        <h4>Transport</h4>
+        <h5 style={{color:"darkblue"}}>Type: {data.name}</h5>
+        <h6 style={{color:"red"}}>{data.prix}Dhs</h6>
+        </div>         ))}   
          
         </div>
 

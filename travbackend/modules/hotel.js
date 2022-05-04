@@ -7,6 +7,7 @@ const hotelShema=new Schema({
     quartier:{type:String},
     prix:{type:Number},
     image:{type:String},
+    resto:{type:mongoose.Types.ObjectId,ref:"Foodplace"}
      
 });
 module.exports=mongoose.model('Hotel',hotelShema);

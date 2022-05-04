@@ -11,8 +11,8 @@ const Data=()=>{
 return(
 <section className="datadiv">    
 <Vnav />
-<Title/>
 <Showoffres />
+<Title/>
 </section>
 
 )

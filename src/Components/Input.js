@@ -13,7 +13,7 @@ const Input=(props)=>{
   
   async function handleInfo(){
  
-    if(BudgetRef.current.value>=500 && NumberNightRef.current.value>=1){
+    if(BudgetRef.current.value>=1500 && NumberNightRef.current.value>=1){
 
     var state={
 
@@ -27,7 +27,7 @@ const Input=(props)=>{
 
   
       setTimeout(() => {
-        window.location.href='../data?budget='+state.budget+'&city='+state.city+'&nuits='+state.nuits;
+        window.location.href='../data?budget='+state.budget+'&city='+state.city+'&nuits='+state.nuits+'&depart='+state.DepartPlace;
       }, 2000)
 
 
@@ -45,7 +45,7 @@ const Input=(props)=>{
           
         <Form.Group  className="mb-3" hidden={(props.filter==0)?false:true}>
           <Form.Label >Budget</Form.Label>
-          <Form.Control type="number" min="500" placeholder="Enter Budget" ref={BudgetRef}/>
+          <Form.Control type="number" min="1500" placeholder="Enter Budget" ref={BudgetRef}/>
 
           
         </Form.Group>

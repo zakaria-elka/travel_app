@@ -11,7 +11,7 @@ const ToId=mongoose.Types.ObjectId;
 
 
 const getPacksByUser=async (req,res)=>{
-const packs =await Pack.where("userId").equals(req.params.userid)
+const packs =await Pack.where("userId").equals(req.params.userid).populate({path:"hotelId",model:"Hotel",populate:{path:"resto",model:"Foodplace"}}).populate({path:"transportId",model:"Transport"});
  
 
 res.json({mypacks:packs})
@@ -22,7 +22,7 @@ const getPackByPreferences=async (req,res)=>{
      
 const depart=req.params.depart;
 const city=req.params.city;
-const hotels= await Hotel.where("city").equals(city).populate({path:"resto",model:"Foodplace"});
+const hotels= await Hotel.where("city").equals(city).populate({path:"resto",model:"Foodplace"}).populate({path:"resto",model:"Foodplace"});
      
     const transp= await Transp.where("depart").equals(depart).where("finish").equals(city);
     res.json({"hotels":hotels ,"transports":transp}) 
@@ -68,7 +68,7 @@ const getAllPacks=async (req,res,next)=>{
     req.body.transportid=ToId(req.body.transportid)
     req.body.restoid=ToId(req.body.restoid)
     //verification if theres a similar pack
-   const search=await Pack.find({ "hotelId": { _id:req.body.hotelid}, "foodId": { _id: req.body.restoid }, "transportId": { _id: req.body.transportid }, "userId": req.body.userid} );
+   const search=await Pack.find({ "hotelId": { _id:req.body.hotelid}, "foodId": { _id: req.body.restoid }, "transportId": { _id: req.body.transportid }, "userId": req.body.userid} ).populate({path:"resto",model:"Foodplace"});;
    //.where("hotelId").equals(req.body.hotelid).where("userId").equals(req.body.userId).where("foodId").equals(req.body.restoid)
    //.where("transportId").equals(req.body.transportid);
    console.log("length : "+search.length)

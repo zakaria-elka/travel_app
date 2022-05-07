@@ -77,12 +77,14 @@ const getAllPacks=async (req,res,next)=>{
     pack.save().then(data=>{
         console.log(data)
     }).catch(err=>{
+ 
         console.log(err)
         return res.status( 404 )
     })}
     console.log(req.body)
      
     res.json("pack added")    
+ 
     }
 
     const removeFromFavorites=async (req,res,next)=>{

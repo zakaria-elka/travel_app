@@ -10,13 +10,16 @@ const Title=()=>{
 
 
 const currentUser=useAuth();
+const [show,setShow]=useState(0);
 
 return(
    <div className="title" >
        
-         <h2 className="email"  style={{color:"white",fontSize:"20px",paddingRight:"12px",paddingTop:"13px"}}
-         >{currentUser.email}</h2>
-         <h2 className="Usericon">  <i class="lni lni-user" style={{color:"white",flex:"2"}}></i></h2>
+  {show?
+ <i  onClick={()=>setShow(0)} >{currentUser.email}</i> :<i class="lni lni-user" onClick={()=>setShow(1)} ></i>}
+  
+  
+
    </div>
 
 

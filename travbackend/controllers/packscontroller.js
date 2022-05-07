@@ -8,6 +8,16 @@ const Transp=require("../modules/transport")
 const Pack=require("../modules/pack")
 const ToId=mongoose.Types.ObjectId;
 
+
+
+const getPacksByUser=async (req,res)=>{
+const packs =await Pack.where("userId").equals(req.params.userid)
+ 
+
+res.json({mypacks:packs})
+
+    }
+
 const getPackByPreferences=async (req,res)=>{
      
 const depart=req.params.depart;
@@ -115,4 +125,5 @@ exports.getUserPack=getUserPack;
 exports.showPack=showPack;
 exports.addToFavorites=addToFavorites;
 exports.removeFromFavorites=removeFromFavorites;
+exports.getPacksByUser=getPacksByUser
  

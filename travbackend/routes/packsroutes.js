@@ -7,5 +7,6 @@ router.get('/search/:budget/:city/:nuits/:depart',packscontroller.getUserPack);
 router.get('/pack/:packid',packscontroller.showPack);
 router.post('/fav',packscontroller.addToFavorites);
 router.get('/pref/:depart/:city',packscontroller.getPackByPreferences);
+router.get('/mypacks/:userid',packscontroller.getPacksByUser)
  
 module.exports = router ;

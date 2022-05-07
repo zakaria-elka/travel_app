@@ -7,6 +7,18 @@ const Resto=require("../modules/foodplace");
 const Transp=require("../modules/transport")
 const Pack=require("../modules/pack")
 const ToId=mongoose.Types.ObjectId;
+
+const getPackByPreferences=async (req,res)=>{
+     
+const depart=req.params.depart;
+const city=req.params.city;
+const hotels= await Hotel.where("city").equals(city).populate({path:"resto",model:"Foodplace"});
+     
+    const transp= await Transp.where("depart").equals(depart).where("finish").equals(city);
+    res.json({"hotels":hotels ,"transports":transp}) 
+
+
+}
 const getAllPacks=async (req,res,next)=>{
     if(false){
         const error=new HttpError("list is empty",500)
@@ -38,33 +50,55 @@ const getAllPacks=async (req,res,next)=>{
 
    
     const addToFavorites=async (req,res,next)=>{
-       
+      
     if(false){
         const error=new HttpError("list is empty",500)
     return next(error)}
-    
+    req.body.hotelid=ToId(req.body.hotelid)
+    req.body.transportid=ToId(req.body.transportid)
+    req.body.restoid=ToId(req.body.restoid)
+    //verification if theres a similar pack
+   const search=await Pack.find({ "hotelId": { _id:req.body.hotelid}, "foodId": { _id: req.body.restoid }, "transportId": { _id: req.body.transportid }, "userId": req.body.userid} );
+   //.where("hotelId").equals(req.body.hotelid).where("userId").equals(req.body.userId).where("foodId").equals(req.body.restoid)
+   //.where("transportId").equals(req.body.transportid);
+   console.log("length : "+search.length)
      
-    const pack=new Pack({
+    if(search.length>0)
+    return res.status(409).json("existing pack")
+    if(search.length===0)
+     {const pack=new Pack({
         userId: req.body.userid,
-        hotelId: req.body.hotelid,
-        foodId:req.body.restoid,
-        transportId:req.body.transportid
+        hotelId: ToId(req.body.hotelid),
+        foodId:ToId(req.body.restoid),
+        transportId:ToId(req.body.transportid)
          
     })
      
     pack.save().then(data=>{
-        res.json(data) 
+        console.log(data)
     }).catch(err=>{
-        res.json({message:err})
-    })
+        console.log(err)
+        return res.status( 404 )
+    })}
+    console.log(req.body)
      
-    res.json(req.params.userid)    
+    res.json("pack added")    
     }
+
     const removeFromFavorites=async (req,res,next)=>{
         if(false){
             const error=new HttpError("list is empty",500)
         return next(error)}
-        res.json({})    
+        const search=await Pack.findById(req.params.packid)
+        
+        if(!search){
+            res.status(404).json("innexisting")
+         }
+    else{
+        const deletedpack=await Pack.remove({_id:req.params.packid})
+    res.json({"removed":deletedpack}) 
+    }
+
         }
 
 
@@ -74,7 +108,7 @@ const pack=await Pack.findById(req.params.packid).populate({path:"hotelId",model
 res.json(pack);
     }
 exports.getAllPacks=getAllPacks;
- 
+exports.getPackByPreferences=getPackByPreferences;
 exports.getUserPack=getUserPack;
 exports.showPack=showPack;
 exports.addToFavorites=addToFavorites;

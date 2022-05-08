@@ -25,7 +25,8 @@ const city=req.params.city;
 const hotels= await Hotel.where("city").equals(city).populate({path:"resto",model:"Foodplace"}).populate({path:"resto",model:"Foodplace"});
      
     const transp= await Transp.where("depart").equals(depart).where("finish").equals(city);
-    res.json({"hotels":hotels ,"transports":transp}) 
+    const resto=await Resto.where("city").equals(city);
+    res.json({"hotels":hotels ,"transports":transp,"resto":resto}) 
 
 
 }

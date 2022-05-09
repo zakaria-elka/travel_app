@@ -11,7 +11,7 @@ const ToId=mongoose.Types.ObjectId;
 
 
 const getPacksByUser=async (req,res)=>{
-const packs =await Pack.where("userId").equals(req.params.userid).populate({path:"hotelId",model:"Hotel",populate:{path:"resto",model:"Foodplace"}}).populate({path:"transportId",model:"Transport"});
+const packs =await Pack.where("userId").equals(req.params.userid).populate({path:"hotelId",model:"Hotel",populate:{path:"resto",model:"Foodplace"}}).populate({path:"transportId",model:"Transport"}).populate({path:"foodId",model:"Foodplace"});
  
 
 res.json({mypacks:packs})

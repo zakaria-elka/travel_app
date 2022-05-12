@@ -42,6 +42,21 @@ const firebaseConfig = {
 
 }
  }
+
+ export function useAuth(){
+
+  const [currentUser , setCurrentUser]= useState();
+ 
+  useEffect(()=>{
+   const nosub = onAuthStateChanged(auth ,user =>{setCurrentUser(user)});
+   return nosub;
+  },[]);
+
+
+  return currentUser;
+
+}
+
   
 
 export function login(email,password){
@@ -58,19 +73,6 @@ try{
 
 
 
-export function useAuth(){
-
-     const [currentUser , setCurrentUser]= useState();
-    
-     useEffect(()=>{
-      const nosub = onAuthStateChanged(auth ,user =>{setCurrentUser(user)});
-      return nosub;
-     },[]);
-
-
-     return currentUser;
-
-  }
 
 
   

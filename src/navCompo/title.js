@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar,Nav} from 'react-bootstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './title.css';
 import { useAuth } from "../firebase/fire";

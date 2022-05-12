@@ -34,8 +34,8 @@ const Showoffres=()=>{
     let trans=document.getElementById("transportid"+i).innerHTML;
 
 
-
-    await axios.post('http://localhost:5000/api/packs/fav', {'userid':currentUser.email,'hotelid':hotel,'restoid':resto,'transportid':trans}
+  await axios.post('http://localhost:5000/api/packs/fav', {'userid':currentUser.email,'hotelid':hotel,'restoid':resto,'transportid':trans}
+  
     
     
     )
@@ -82,9 +82,10 @@ return(
 <form className="cardData"  >      
 
    
-
-        <div className="divdata">
+        
+        
         {results.hotels.slice(i,i+1).map((data) =>( 
+          <div className="divdata">
         <div style={{display:"flex"}}>
         <img className="img" src={"http://localhost:5000/api/hotels/image/"+data.name} />        
         <div style={{width:"30%",flex:5}}>
@@ -96,14 +97,16 @@ return(
       
 
         </div>
-        
+        </div>
          ))}   
          
-        </div>
-        <div className="divdata">
+        
+
+       
         {results.hotels.slice(i,i+1).map((data) =>( 
+           <div className="divdata">
          <div style={{display:"flex"}}>
-         <img className="img" src={"http://localhost:5000/api/hotels/image/"+data.name} />        
+         <img className="img2" src={"http://localhost:5000/api/hotels/image/res"+data.resto.name} />        
          <div style={{width:"40%",flex:5}}>
          <h2 hidden id={"restoid"+i}>{data.resto._id}</h2>
         
@@ -114,31 +117,34 @@ return(
        
  
          </div>
-         
+         </div>
         
          ))}   
          
-        </div>
-        <div className="divdata">
+        
+       
         {results.transport.slice(i,i+1).map((data) =>( 
+           <div className="divdata">
         <div style={{width:"100%",textAlign:"center"}}>
         <h2 hidden id={"transportid"+i}>{data._id}</h2>
         <h4>Transport</h4>
         <h5 style={{color:"darkblue"}}>Type: {data.name}</h5>
+        <h5 style={{color:"darkblue"}}>Depart Point: {data.departplace}</h5>
+        <h5 style={{color:"darkblue"}}>Travel Duration: {data.duration}</h5>
         <h6 style={{color:"red"}}>{data.prix}Dhs</h6>
-        </div>         ))}   
+        </div>       </div>  ))}   
          
-        </div>
+        
 
         
     
 
-       
+        {(results.transport.length>i || results.hotels.length>i)?
         <div className="divdata"  style={{height:"5%",padding:"5px 50%"}}>
         {(saved.id===i)?<i class="lni lni-heart-filled"  />:<i class="lni lni-heart"
         hidden={confirm} onClick={()=>{handleData(i); 
           setSaved({save:true,id:i});setConfirme(1) }} />}
-        </div>
+        </div>:null}
         
        
      

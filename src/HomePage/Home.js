@@ -17,7 +17,7 @@ const Home=()=>{
        <NavBar/>
       <div className='txt'>
         <p >Need Travel?</p>
-        <pre>We are here to help you!</pre>
+        <pre>We are here to help you! &#128578;</pre>
 
       </div>
       <React.Fragment >

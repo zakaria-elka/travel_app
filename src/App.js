@@ -9,6 +9,9 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './HomePage/Home';
+import CustomPage from './CustomPage/CustomPage';
+import Fav from './favoris/fav';
+
  
 function App() {
   return (
@@ -21,7 +24,8 @@ function App() {
   <Route path="/" element={<Home/> }/>
   <Route path="/filterbox" exact element={<FilterBox />}/>
   <Route path="/data" exact element={<Data />}  />
- 
+  <Route path="/custom" exact element={<CustomPage />}  />
+  <Route path="/fav" exact element={<Fav/>}  />
  
 
 </Routes>

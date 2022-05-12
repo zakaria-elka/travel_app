@@ -1,0 +1,41 @@
+
+
+  .customoffer{
+
+    position: absolute;
+    left: 35%;
+    top: 11%;
+    width: 60%;
+    height:200px;
+
+    
+    
+  
+ 
+ 
+    
+    }
+
+    .showcustom{
+
+      box-shadow: 2px 2px #e9ecef, -2px 0 2px #e9ecef;
+      border-radius: 1rem;
+      padding: 10px 0 10px 0;
+      margin-bottom: 10px;
+      height: 100%;
+      
+    }
+   
+  
+
+.dataCard{
+
+position: fixed;
+top: 20%;
+left:10%;
+height: 60%;
+width: 20%;
+
+
+
+}

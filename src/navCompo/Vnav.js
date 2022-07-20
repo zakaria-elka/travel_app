@@ -21,6 +21,13 @@ const gocustom=()=>{
 
 }
 
+const goadd=()=>{
+
+    window.location.href='../add';
+
+
+}
+
 async function  handleLogout(){
 
     await logout();
@@ -64,7 +71,7 @@ const gofavoris=()=>{
                     </a>
                 </li>:null} 
                 <li class="has-subnav">
-                    <a href="#">
+                    <a href="#"  onClick={()=>goadd()}>
                         <i class="fa fa-plus fa-2x"></i>
                         <span class="nav-text">
                             Add Offre

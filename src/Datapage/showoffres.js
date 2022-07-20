@@ -77,7 +77,7 @@ return(
          
          
 <div className="jumbotron" >
-{(Object.keys(results).length > 0)  &&
+{(Object.keys(results).length > 0)?
 [0,1,2].map((i)=>(
 <form className="cardData"  >      
 
@@ -153,7 +153,7 @@ return(
 
 
 </form>    
-))
+)):null
 }       
          
 

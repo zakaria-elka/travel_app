@@ -11,6 +11,7 @@ import {
 import Home from './HomePage/Home';
 import CustomPage from './CustomPage/CustomPage';
 import Fav from './favoris/fav';
+import Add from './addoffre/addoffre';
 
  
 function App() {
@@ -26,6 +27,7 @@ function App() {
   <Route path="/data" exact element={<Data />}  />
   <Route path="/custom" exact element={<CustomPage />}  />
   <Route path="/fav" exact element={<Fav/>}  />
+  <Route path="/add" exact element={<Add/>}  />
  
 
 </Routes>

@@ -1,0 +1,18 @@
+.putdiv{
+
+    position: absolute;
+    left: 7%;
+    top: 12%;
+    width: 90%;
+    display: flex;
+    
+   
+    
+    }
+
+.divputcard{
+
+        box-shadow: 2px 2px #e9ecef, -2px 0 2px #e9ecef;
+
+
+    }
